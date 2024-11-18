@@ -151,7 +151,7 @@ class Notes{
 
 		void show_notes(){
 			for (size_t i = 0; i < __notes.size(); i++){
-				std::cout << "[" << i << "]:" << __notes[i] << std::endl;
+				std::cout << "[" << i << "]: " << __notes[i] << std::endl;
 			}
 		}
 
