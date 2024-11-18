@@ -15,7 +15,10 @@ OBJ_C = $(SRC_C:$(SRC_PATH)/%.$(C_FILE_EXTENSION)=$(OBJ_PATH)/%.o)
 
 TARGET = $(BIN_PATH)/$(PROJECT_NAME)
 
-all : $(TARGET)
+all : start $(TARGET)
+
+start :
+	mkdir -p obj bin
 
 $(TARGET) : $(OBJ_C) $(OBJ_ASM)
 	$(C_COMPILER) $(C_COMPILER_FLAGS) $(OBJ_C) $(OBJ_ASM) -o $(TARGET)
