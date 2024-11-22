@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <cctype>
 
-#define VERSION "1.0"
+#define VERSION "1.1"
 
 // The name of the file where the notes will be stored.
 #define FILE_NAME ".notes"
