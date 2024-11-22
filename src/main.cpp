@@ -19,6 +19,11 @@
 // The name of the file where the notes will be stored.
 #define FILE_NAME ".notes"
 
+// Structure for storing settings and flags.
+struct {
+	bool color;
+} options;
+
 // A function to terminate the program. It is used throughout the
 // program for error handling.
 void die(const char* __format, ...){
@@ -151,7 +156,12 @@ class Notes{
 
 		void show_notes(){
 			for (size_t i = 0; i < __notes.size(); i++){
-				std::cout << "[" << i << "]: " << __notes[i] << std::endl;
+				if (options.color){
+					std::cout << "[" << "\033[94m" << i << "\033[0m" << "]:" << __notes[i] << std::endl;
+				}
+				else{
+					std::cout << "[" << i << "]:" << __notes[i] << std::endl;
+				}
 			}
 		}
 
@@ -168,12 +178,13 @@ void str_is_digits(std::string str) {
 
 int main(int argc, char** argv){
 	Notes notes;
-	const char* short_options = "a:d:D:svh";
+	const char* short_options = "a:d:D:scvh";
 	const struct option long_options[] = {
 		{"add", required_argument, NULL, 'a'},
 		{"delete", required_argument, NULL, 'd'},
 		{"delete-all", required_argument, NULL, 'D'},
 		{"show", no_argument, NULL, 's'},
+		{"color", no_argument, NULL, 'c'},
 		{"version", no_argument, NULL, 'v'},
 		{"help", no_argument, NULL, 'h'},
 		{0, 0, 0, 0}
@@ -198,6 +209,14 @@ int main(int argc, char** argv){
 				break;
 			case 's':
 				notes.show_notes();
+				break;
+			case 'c':
+				if (options.color){
+					options.color = false;
+				}
+				else{
+					options.color = true;
+				}
 				break;
 			case 'v':
 				std::cout << "Notes version: " << VERSION << std::endl;

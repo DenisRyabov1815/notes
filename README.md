@@ -1,3 +1,4 @@
+
 # Notes
 A simple note-taking program for the terminal on the Linux operating system, written in C++.
 This project primarily serves as a programming practice in C++. Therefore, I kindly ask you not to judge too harshly.
@@ -25,3 +26,16 @@ Available commands:
 -   **-s, --show**: Display all notes.
 -   **-v, --version**: Display the program version.
 -   **-h, --help**: Show help information.
+
+# Updates for version 1.1
+- A color mode for displaying notes has been added.
+
+Example of using new features:
+```bash
+# Just display the notes.
+notes --show
+# Set the color mode and display the notes.
+notes --color --show
+# You can enable or disable the color mode.
+notes --color --show --color --show
+```
